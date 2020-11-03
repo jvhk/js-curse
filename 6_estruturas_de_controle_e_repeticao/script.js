@@ -14,11 +14,32 @@ if (idade >= 18) {
 let numero = 1;
 
 while (numero <= 10) {
-    console.log(`Número = ${numero}`);
+    console.log(`Número WHILE = ${numero}`);
     numero++;
 }
 
 do {
-    console.log(`Número = ${numero}`);
+    console.log(`Número DO/W = ${numero}`);
     numero++;
 } while (numero <= 20);
+
+
+for (let n = 0; n < 10; n++) {
+    console.log(`Numero for = ${n}`);
+}
+
+//switch case
+
+let switchVar = "João";
+
+switch (switchVar) {
+    case "João":
+        console.log("Nome João");
+        break;
+    case "Maria":
+        console.log("Nome Maria");
+        break;
+    default:
+        console.log("Sem nome");
+        break;
+}
