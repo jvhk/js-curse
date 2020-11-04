@@ -43,3 +43,37 @@ function idadeNome(nome, idade) {
 
 console.log(idadeNome("João"));
 console.log(idadeNome("João", 10));
+
+
+//Argumento com valor default
+function repetirFrase(frase, n = 5) {
+    for (let x = 1; x <= n; x++) {
+        console.log(frase + x);
+    }
+}
+
+repetirFrase("Olá ");
+repetirFrase("Dois ", 1);
+
+//Closure
+
+function armazenarSoma(x) {
+    return y => x + y;
+}
+
+let soma1 = armazenarSoma(3);
+console.log(soma1(10)); //3 + 10
+let soma2 = armazenarSoma(2);
+console.log(soma2(1)); //2 + 1
+
+//Recursão
+function retornaPar(n) {
+    if (n % 2 == 0) {
+        console.log("n agora é par: " + n);
+    } else {
+        console.log(n);
+        retornaPar(n - 1);
+    }
+}
+
+retornaPar(33);
