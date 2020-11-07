@@ -102,3 +102,13 @@ console.log(numbers3.slice(3));
 numbers3.forEach(element => {
     console.log(element);
 });
+
+//Métodos para arrays: include
+let carros = ["BMW", "Fiat", "Audi"];
+
+console.log(carros.includes("Fiat")); //verifica se existe no array
+
+
+//Métodos para arrays: reverse (inverte o array)
+let carrosInvertido = carros.reverse();
+console.log(carrosInvertido);
