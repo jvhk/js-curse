@@ -83,3 +83,10 @@ console.log(frutas);
 console.log(frutaRemovida);
 frutas.unshift("Laranja");
 console.log(frutas);
+
+
+//Métodos de arrays indexOf e lastIndexOf
+let numbers2 = [10, 20, 30, 40, 20];
+
+console.log(numbers2.indexOf(10)); //indice do elemento procurado
+console.log(numbers2.lastIndexOf(20)); //ultimo indice do elemento procurado
