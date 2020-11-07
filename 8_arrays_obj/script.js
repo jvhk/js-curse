@@ -90,3 +90,15 @@ let numbers2 = [10, 20, 30, 40, 20];
 
 console.log(numbers2.indexOf(10)); //indice do elemento procurado
 console.log(numbers2.lastIndexOf(20)); //ultimo indice do elemento procurado
+
+//Métodos de arrays Slice
+//Retorna um array a partir de outro array, os parametros são inicio e fim do
+//array
+let numbers3 = [10, 20, 30, 40, 20];
+console.log(numbers3.slice(0, 3));
+console.log(numbers3.slice(3));
+
+//Método de percorrer o array por inteiro
+numbers3.forEach(element => {
+    console.log(element);
+});
