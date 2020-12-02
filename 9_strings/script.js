@@ -64,3 +64,7 @@ let pessoa1 = {
 let pessoaTexto = JSON.stringify(pessoa1);
 
 console.log(pessoaTexto);
+
+//pessoaTexto = JSON.parse(pessoa1);
+
+//console.log(pessoaTexto);
