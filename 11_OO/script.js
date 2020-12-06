@@ -38,3 +38,31 @@ let pessoaNova = Object.create(pessoa);
 
 console.log(pessoaNova.maos);
 console.log(Object.getPrototypeOf(pessoaNova) == pessoa);
+
+
+
+//Classes
+
+let gato = {
+    raca: 'SRD'
+}
+
+let pastorAlemao = Object.create(gato);
+
+pastorAlemao.raca = 'Pastor Alemão';
+
+console.log(pastorAlemao.raca);
+
+
+
+//Instanciando classe por função CONSTRUCT
+
+function criarCachorro(raca){
+    let cachorro = Object.create({});
+    cachorro.raca = raca;
+    return cachorro;
+}
+
+let doberman = criarCachorro('Doberman');
+
+console.log(doberman.raca);
