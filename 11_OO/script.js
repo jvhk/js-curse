@@ -89,3 +89,40 @@ Cachorro.prototype.uivarPrototype = function(){
 
 let pintcher = new Cachorro('Pitcher');
 pintcher.uivarPrototype();
+
+
+//construtor da classe ES6
+
+class Gato{
+    constructor(raca){
+        this.raca = raca;
+    }
+}
+
+let racaGato = new Gato('Gato sem raça');
+console.log(racaGato.raca);
+
+
+//Override no prototype
+let racaGato2 = new Gato('Gato com raça');
+
+Gato.prototype.raca = 'SRD';
+
+console.log(Gato.prototype.raca);
+
+
+//métodos e propriedades de uma classe
+
+class Peixe{
+    constructor(especie){
+        this.especie = especie;
+    }
+
+    nadar(){
+        console.log("O peixe está nadando");
+    }
+}
+
+Peixe.prototype.especie = "Tilápia";
+
+console.log(Peixe.prototype.especie);
