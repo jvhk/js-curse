@@ -66,3 +66,26 @@ function criarCachorro(raca){
 let doberman = criarCachorro('Doberman');
 
 console.log(doberman.raca);
+
+
+// instancia por new :
+
+function Cachorro(raca){
+    this.raca = raca;
+    this.uivar = function(){
+        console.log("Auuuuuuuu");
+    }
+}
+
+let husky = new Cachorro('Husky');
+console.log(husky.raca);
+husky.uivar();
+
+
+//métodos no prototype
+Cachorro.prototype.uivarPrototype = function(){
+    console.log("Auuu com prototype");
+}
+
+let pintcher = new Cachorro('Pitcher');
+pintcher.uivarPrototype();
