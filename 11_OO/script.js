@@ -183,3 +183,8 @@ class Cavalo extends Mamifero{
 
 let mangaLarga = new Cavalo(4,"Manga Larga");
 console.log(mangaLarga);
+
+//InstanceOf : verifica se um objeto é filho de outra classe
+
+console.log(new Cavalo instanceof Mamifero);
+
