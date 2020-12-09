@@ -126,3 +126,60 @@ class Peixe{
 Peixe.prototype.especie = "Tilápia";
 
 console.log(Peixe.prototype.especie);
+
+
+//Symbol
+class Passaro{
+    constructor(cor){
+        this.cor = cor;
+    }
+}
+
+Passaro.prototype.cor = 'Verde';
+
+let tamanho = Symbol();
+
+Passaro.prototype[tamanho] = 10;
+
+console.log(Passaro.prototype[tamanho]);
+
+//Get Set
+
+class Macaco{
+    constructor(raca){
+        this.raca = raca;
+    }
+
+    get verRaca(){
+        return "A raça é: " + this.raca;
+    }
+
+    set novaRaca(value){
+        this.raca = value;
+    }
+}
+
+let babuino = new Macaco('Babuino');
+console.log(babuino.verRaca);
+
+babuino.novaRaca = 'Macaco Prego';
+console.log(babuino.verRaca);
+
+
+//herança
+
+class Mamifero{
+    constructor(patas){
+        this.patas = patas;
+    }
+}
+
+class Cavalo extends Mamifero{
+    constructor(patas, raca){
+        super(patas, patas);
+        this.raca = raca;
+    }
+}
+
+let mangaLarga = new Cavalo(4,"Manga Larga");
+console.log(mangaLarga);
