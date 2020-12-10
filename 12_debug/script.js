@@ -48,6 +48,35 @@ console.log(checarNumero('teste'));
 
 let x = 1;
 
-if(x != 2){
-    throw new Error("O valor de a não pode ser 1");
+//if(x != 2){
+    //throw new Error("O valor de a não pode ser 1");
+//}
+
+
+//try catch e finally
+try{
+    let y = variavel1 + variavel2; 
+}catch (error){
+    console.log("Algo deu errado: " + error);
+}finally{
+    console.log("Bloco finally");
 }
+
+
+//assertions 
+
+/*function iterarArray(arr){
+    if(arr.length == 0){
+        throw new Error("O array precisa ter elementos");
+    }else{
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i].log)    
+        }   
+    }
+}
+let arrAux = [1,2,3,4];
+let arrAux2 = [];
+iterarArray(arrAux);
+iterarArray(arrAux2);
+
+*/
