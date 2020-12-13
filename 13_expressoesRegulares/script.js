@@ -86,3 +86,93 @@ console.log(notAZ.test("asdasd"));
 console.log(notAZ.test("oiopoi"));
 console.log(notAZ.test("uiiuyuiyuiyui"));
 console.log(notAZ.test("123"));
+
+
+//operador plus
+console.log("Operador PLUS");
+const muitosOuPoucos = /\d+/;           //significa que a expressão pode se expressar
+
+console.log(muitosOuPoucos.test("asdasd"));
+console.log(muitosOuPoucos.test("oiopoi"));
+console.log(muitosOuPoucos.test("uiiuyuiyuiyui"));
+console.log(muitosOuPoucos.test("123a123"));
+
+
+//operador question ?
+console.log("Operador QUESTION:");
+const opcional = /Prova\s?\d?/;           //faz com que o digito anterior seja opcional
+
+console.log(opcional.test("Prova"));
+console.log(opcional.test("Prova 1"));
+console.log(opcional.test("Prova 2"));
+console.log(opcional.test("Prova 3"));
+
+
+
+//ocorrência precisa 
+console.log("Ocorrência precisa:");
+const telefone = /\d{4,5}-\d{4}/;           //inserir um numero de ocorrencia entre os {}
+
+console.log(telefone.test("4004-5050"));
+console.log(telefone.test("40040-50500"));
+console.log(telefone.test("999-999"));
+console.log(telefone.test("9999-9"));
+
+
+
+//método exec
+console.log("Método exec:");
+const testExec = /\d+/.exec("O número 100");           //inserir um numero de ocorrencia entre os {}
+
+console.log(testExec);
+console.log(testExec.index);
+
+
+
+//método match
+console.log("Método match:");
+const metodoMatch = "O número 100".match(/\d+/);           //similar ao exec
+
+console.log(metodoMatch);
+console.log(metodoMatch.index);
+
+
+
+
+//choice pattern
+console.log("Choice pattern:");
+const frutas = /\d+ (bananas|maçãs|laranjas)/;           //similar ao exec
+
+console.log(frutas.test("10 bananas"));
+console.log(frutas.test("25 batatas"));
+console.log(frutas.test("8 laranjas"));
+
+
+
+//validando domínios
+console.log("Validando domínios:");
+const validacaoDominio = /www.\w+\.com|com.br/;           
+
+console.log(validacaoDominio.test("www.google.com"));
+console.log(validacaoDominio.test("www.teste"));
+console.log(validacaoDominio.test("www.google.com.br"));
+
+
+
+//validando e-mails
+console.log("Validando e-mails:");
+const validacaoEmail = /\w+@\w+\.\w+/;           
+
+console.log(validacaoEmail.test("teste@email.com"));
+console.log(validacaoEmail.test("teste@email.com.br"));
+console.log(validacaoEmail.test("email.com"));
+
+
+
+//validando data de nascimento
+console.log("Validando data de nascimento:");
+const validaData = /^[0-9]{2}[/][0-9]{2}[/][0-9]{4}/;           
+
+console.log(validaData.test("20/20/99"));
+console.log(validaData.test("20/20/2020"));
+console.log(validaData.test("2/2/2020"));
