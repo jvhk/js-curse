@@ -28,3 +28,25 @@ let elementoPai = document.querySelector("#container-principal");
 elementoPai.insertBefore(novoElemento, elementoAlvo);
 
 
+// inserindo elementos com appendChild
+
+let elementoCriado = document.createElement("p");
+let novoTexto = document.createTextNode("Novo texto inserido");
+
+elementoCriado.appendChild(novoTexto);
+
+let elemento2 = document.querySelector(".classe-ul");
+let pai2 = elemento2.parentNode;
+
+pai2.appendChild(elementoCriado);
+
+
+// replaceChild repõe antigo elemento do DOM com um novo
+
+let newHeading = document.querySelector("#titulo")   
+let paiHeading = newHeading.parentNode;
+
+paiHeading.replaceChild(elementoCriado, newHeading);
+
+
+
