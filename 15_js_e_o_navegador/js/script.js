@@ -49,4 +49,36 @@ let paiHeading = newHeading.parentNode;
 paiHeading.replaceChild(elementoCriado, newHeading);
 
 
+// inserindo texto nos elementos
 
+let newText = document.createTextNode("Esté é o texto a ser inserido");
+let paragraph = document.getElementById("sem-texto");
+
+paragraph.appendChild(newText);
+
+
+
+// criando nós de elementos
+let lista = document.createElement("ul");
+
+for (let i = 0; i < 5; i++) {
+
+    
+    let item = document.createElement("li");
+    let texto2 = document.createTextNode("Texto da lista gerado pelo JS");
+    item.appendChild(texto2);
+
+
+    lista.appendChild(item);        //inserindo os itens na lista    
+}
+
+let container = document.querySelector("footer");
+container.appendChild(lista);
+
+// Manipulando atributos de elementos
+
+let url = document.getElementById('link');
+console.log(url.getAttribute('href'));
+
+url.setAttribute("href", "www.horadecodar.com.br");
+console.log(url.getAttribute('href'));
