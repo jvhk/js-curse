@@ -82,3 +82,20 @@ console.log(url.getAttribute('href'));
 
 url.setAttribute("href", "www.horadecodar.com.br");
 console.log(url.getAttribute('href'));
+
+
+// Largura e altura dos elementos
+let elTeste = document.getElementById("container-principal");
+
+console.log(elTeste.offsetHeight);  //considera as bordas do elemento
+console.log(elTeste.offsetWidth);
+
+console.log(elTeste.clientHeight);
+console.log(elTeste.clientWidth); //desconsidera as bordas do elemento
+
+
+//Posições dos elementos
+
+let elementoPosicao = document.querySelector('#container-principal');
+
+console.log(elementoPosicao.getBoundingClientRect());
