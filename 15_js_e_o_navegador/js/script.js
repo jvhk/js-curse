@@ -99,3 +99,28 @@ console.log(elTeste.clientWidth); //desconsidera as bordas do elemento
 let elementoPosicao = document.querySelector('#container-principal');
 
 console.log(elementoPosicao.getBoundingClientRect());
+
+
+// Estilizando elementos do CSS
+
+let paragrafo = document.getElementById("sem-texto");
+
+console.log(paragrafo.style);
+
+setTimeout(() => {
+    paragrafo.style.color = 'red';
+    paragrafo.style.backgroundColor = 'black';    
+}, 2000);
+
+
+//Selecionar vários elementos com queryAll 
+
+let todosElementos = document.querySelectorAll(".itens-vermelhos");
+
+console.log(todosElementos);
+todosElementos.forEach(element => {
+    element.style.color = "red";
+});
+
+
+
