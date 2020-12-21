@@ -43,3 +43,22 @@ btn4.addEventListener("click",msg3);
 p.addEventListener("click", function(){
     console.log("Clicou no paragrafo");
 });
+
+
+//Ações default
+
+let a = document.querySelector("a");
+
+a.addEventListener("click", function(e){
+    e.preventDefault();
+    console.log("Clicou mas não mudou de link");
+});
+
+//Eventos de tecla
+
+window.addEventListener("keydown",function(e){
+    if(e.key == "v"){
+        console.log("Apertou a tecla V");
+    }
+});
+
