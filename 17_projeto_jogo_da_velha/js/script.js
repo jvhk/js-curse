@@ -2,11 +2,11 @@ let x = document.querySelector(".x");
 let o = document.querySelector(".o");
 
 let boxes = document.querySelectorAll(".box");
-let buttons = document.querySelectorAll("#buttons-container button");
+let buttons = document.querySelectorAll(".buttons-container button");
 let messageContainer = document.querySelector("#message");
 let messageText = document.querySelector("#message p");
 
-let secondMessage;
+let secondPlayer;
 
 //contador de jogadas
 let player1 = 0;
@@ -26,6 +26,12 @@ for (let i = 0; i < boxes.length; i++) {
             //computar jogada
             if(player1 == player2){
                 player1++;
+
+                if(secondPlayer == 'ai-player'){
+                    //função para executar jogada
+                    computerPlay();
+                    player2++
+                }
             }else{
                 player2++;
             }
@@ -35,6 +41,23 @@ for (let i = 0; i < boxes.length; i++) {
         }   
 
     });   
+}
+
+
+//Evento para saber se serão 1v1 ou 1vIA
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function(){
+        secondPlayer = this.getAttribute("id");
+
+        for (let j = 0; j < buttons.length; j++) {
+            buttons[j].style.display = 'none';
+        }
+
+        setTimeout(function(){
+            let container = document.querySelector("#container");
+            container.classList.remove("hide");
+        }, 500);
+    });
 }
 
 
@@ -68,9 +91,9 @@ function checkWinCondidtion(){
         let b2Child = b2.childNodes[0].className;
         let b3Child = b3.childNodes[0].className;
         if(b1Child == 'x' && b2Child == 'x' && b3Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b1Child == 'o' && b2Child == 'o' && b3Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
 
@@ -79,9 +102,9 @@ function checkWinCondidtion(){
         let b5Child = b5.childNodes[0].className;
         let b6Child = b6.childNodes[0].className;
         if(b4Child == 'x' && b5Child == 'x' && b6Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b4Child == 'o' && b5Child == 'o' && b6Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
 
@@ -90,9 +113,9 @@ function checkWinCondidtion(){
         let b8Child = b8.childNodes[0].className;
         let b9Child = b9.childNodes[0].className;
         if(b7Child == 'x' && b8Child == 'x' && b9Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b7Child == 'o' && b8Child == 'o' && b9Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
 
@@ -102,9 +125,9 @@ function checkWinCondidtion(){
         let b4Child = b4.childNodes[0].className;
         let b7Child = b7.childNodes[0].className;
         if(b1Child == 'x' && b4Child == 'x' && b7Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b1Child == 'o' && b4Child == 'o' && b7Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
 
@@ -113,9 +136,9 @@ function checkWinCondidtion(){
         let b5Child = b5.childNodes[0].className;
         let b8Child = b8.childNodes[0].className;
         if(b2Child == 'x' && b5Child == 'x' && b8Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b2Child == 'o' && b5Child == 'o' && b8Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
 
@@ -124,9 +147,9 @@ function checkWinCondidtion(){
         let b6Child = b6.childNodes[0].className;
         let b9Child = b9.childNodes[0].className;
         if(b3Child == 'x' && b6Child == 'x' && b9Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b3Child == 'o' && b6Child == 'o' && b9Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
 
@@ -136,20 +159,21 @@ function checkWinCondidtion(){
         let b5Child = b5.childNodes[0].className;
         let b9Child = b9.childNodes[0].className;
         if(b1Child == 'x' && b5Child == 'x' && b9Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b1Child == 'o' && b5Child == 'o' && b9Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
+    
 
     if(b3.childNodes.length > 0 && b5.childNodes.length > 0  && b7.childNodes.length > 0){
         let b3Child = b3.childNodes[0].className;
         let b5Child = b5.childNodes[0].className;
         let b7Child = b7.childNodes[0].className;
         if(b3Child == 'x' && b5Child == 'x' && b7Child == 'x'){
-            //x
+            declareWinner('x');
         }else if(b3Child == 'o' && b5Child == 'o' && b7Child == 'o'){
-            //o
+            declareWinner('O');
         }
     }
 
@@ -160,9 +184,74 @@ function checkWinCondidtion(){
             cont++;
         }
         if(cont == 9){
-            console.log("Deu velha!");
+            declareWinner("Deu velha!");
         }
         
     }
 
+}
+
+//função que limpa do jogo após um resultado, declara o vencedor e atualiza o placar
+function declareWinner(winner){
+    let scoreboardX = document.querySelector("#scoreboard-1");
+    let scoreboardY = document.querySelector("#scoreboard-2");
+    let msg = '';
+
+    if(winner == 'x'){
+        scoreboardX.textContent = parseInt(scoreboardX.textContent) + 1;
+        msg = 'O jogador 1 venceu!';
+    }else if(winner == 'y'){
+        scoreboardY.textContent = parseInt(scoreboardY.textContent) + 1;
+        msg = 'O jogador 2 venceu!';
+    }else{
+        msg = "Deu velha!";
+    }
+
+    // Exibir mensagem
+    messageText.innerHTML = msg;
+    messageContainer.classList.remove("hide");
+
+    //esconde msg
+    setTimeout(function(){
+        messageContainer.classList.add("hide");
+    }, 3000);
+
+    //zerando as jogadas
+    player1 = 0;
+    player2 = 0;
+
+    //remove X e O
+    let boxesToRemove = document.querySelectorAll(".box div");
+
+    for (let i = 0; i < boxesToRemove.length; i++) {
+        boxesToRemove[i].parentNode.removeChild(boxesToRemove[i]);
+        
+    }
+}
+
+
+//Lógica da jogada da CPU
+function computerPlay(){
+    let cloneO = o.cloneNode(true);
+    counter = 0;
+    filled = 0;
+
+    //só preenche se estiver vazio o filho
+    for (let i = 0; i < boxes.length; i++) {
+        let randomNumber = Math.floor(Math.random() * 5);
+        if(boxes[i].childNodes[0] == undefined){
+            if(randomNumber <= 1){
+                boxes[i].appendChild(cloneO);
+                counter++;
+                break;
+            }
+        //checagem de quantas posições estão preenchidas
+        }else{
+            filled++;
+        }
+    }
+    
+    if(counter == 0 && filled < 9){
+        computerPlay();
+    }
 }
