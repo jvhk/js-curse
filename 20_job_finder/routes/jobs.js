@@ -1,0 +1,31 @@
+
+const express = require('express');
+const router  = express.Router();
+const Job     = require('../models/Job');
+
+
+//rota para teste: (código descartável)
+router.get('/test',(req,resp) => {
+    resp.send("Deu certo a rota");
+});
+
+
+//add JOB via POST
+router.post('/add', (req,resp) => {
+    let {title, salary, company, description, email, new_job} =  req.body;
+
+    //insert
+    Job.create({
+        title,
+        description,
+        salary,
+        company,
+        email,
+        new_job
+    })
+    .then(() => resp.redirect('/'))
+    .catch(err => console.log(err));
+});
+
+
+module.exports = router;
