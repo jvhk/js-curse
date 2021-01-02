@@ -6,13 +6,13 @@ const Job     = require('../models/Job');
 
 router.get('/add',(req, resp)=>{
     resp.render('add');
-})
+});
 
 
 //rota para teste: (código descartável)
-router.get('/test',(req,resp) => {
-    resp.send("Deu certo a rota");
-});
+//router.get('/test',(req,resp) => {
+  //  resp.send("Deu certo a rota");
+//});
 
 
 //add JOB via POST
