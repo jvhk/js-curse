@@ -4,6 +4,7 @@ const path          = require('path');
 const app           = express();
 const db            = require('./db/connection');
 const bodyParser    = require('body-parser');
+const Job           = require('./models/Job');
 
 const PORT = 3000;
 
@@ -20,6 +21,10 @@ app.set('views', path.join(__dirname,'views'));
 app.engine('handlebars', expHandleBars({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
 
+//static folder
+app.use(express.static(path.join(__dirname,'public')));         //pasta de arquivos estáticos 'public'
+
+
 //  DB CONNECTION
 db
     .authenticate()
@@ -33,10 +38,18 @@ db
 
 //  ROUTES
 app.get('/', (req, res) => {
-    res.send("Está funcionando 2");
+    Job.findAll({order:[
+        ['createdAt', 'DESC']
+    ]})
+    .then(jobs => {
+
+        res.render('index', {jobs});
+
+    });
+    
 });
 
 
 
 //Jobs routes
-app.use('/jobs',require('./routes/jobs'));
+app.use('/jobs', require('./routes/jobs'));
