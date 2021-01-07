@@ -84,6 +84,7 @@ function init(){
 function createQuestion(i){
     //limpa a questão anterior
     const oldButtons = answersBox.querySelectorAll("button");
+
     oldButtons.forEach(function(btn){
         btn.remove();
     });
@@ -96,14 +97,14 @@ function createQuestion(i){
     questionNumber.textContent = i + 1;
 
     //insere as alternativas
-    questions[i].answers.forEach(function(answer, index)  {
+    questions[i].answers.forEach(function(answer, i)  {
         // cria um template do botão do quizz
         const answerTemplate = document.querySelector(".answer-template").cloneNode(true);
 
         const letterBtn = answerTemplate.querySelector(".btn-letter");
         const answerText = answerTemplate.querySelector(".question-answer");
 
-        letterBtn.textContent = letters[index];
+        letterBtn.textContent = letters[i];
         answerText.textContent = answer['answer'];
         
         answerTemplate.setAttribute("correct-answer",answer["correct"]);
@@ -126,6 +127,44 @@ function createQuestion(i){
 
     //incrementa o numero da questão
     actualQuestion++;
+
+}
+
+// verifica resposta do usuário
+function checkAnswer(btn){
+    const buttons = answersBox.querySelectorAll("button");
+
+    //verifica se as respostas estão corretas e adiciona classes aos botões
+    buttons.forEach(function(button){
+        if(button.getAttribute("correct-answer") === "true"){
+            button.classList.add("correct-answer");
+            //checa se o usuario acertou a resposta
+            if(btn === button){
+                //incrementa nos pontos
+                points++;
+                //console.log(points);
+            }
+        }else{
+            button.classList.add("wrong-answer");
+        }
+    });
+
+    // exibe proxima pergunta
+    nextQuestion();
+
+}
+
+//exibe a próxima questão
+function nextQuestion(){
+
+    //timer pra pergunta se confirmar
+    setTimeout(function() {
+        
+        if(actualQuestion >= questions.length){
+            //mostra mensagem de sucesso
+        }
+        createQuestion(actualQuestion);
+    }, 1500);
 
 }
 
