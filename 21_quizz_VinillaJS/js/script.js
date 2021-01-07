@@ -1,4 +1,4 @@
-const question = document.querySelector('#question');
+const question = document.querySelector("#question");
 const answersBox = document.querySelector("#answers-box");
 const quizzContainer = document.querySelector("#quizz-container");
 const scoreContainer = document.querySelector("#score-container");
@@ -119,10 +119,10 @@ function createQuestion(i){
         
         // insere evento de clique nos botões 
         answerTemplate.addEventListener("click", function(){
-            console.log(this);
+            checkAnswer(this);
         });
 
-        console.log(answerTemplate);
+        //console.log(answerTemplate);
     });
 
     //incrementa o numero da questão
@@ -162,11 +162,55 @@ function nextQuestion(){
         
         if(actualQuestion >= questions.length){
             //mostra mensagem de sucesso
+            showSucessMessage();
+            return;
         }
         createQuestion(actualQuestion);
-    }, 1500);
+    }, 700);
 
 }
+
+
+// exibe tela final
+function showSucessMessage(){
+    
+    hideShowQuizz();
+
+    // troca dados da tela de sucesso
+
+    //calculo do score
+    const score = ((points / questions.length) * 100).toFixed(2);
+
+    const displayScore = document.querySelector("#display-score span");
+
+    displayScore.textContent = score.toString();
+
+    // alterna o numero de perguntas corretas
+    const correctAnswers = document.querySelector("#correct-answers");
+
+    correctAnswers.textContent = points;
+
+    //altera o total de perguntas
+    const totalQuestions = document.querySelector("#questions-qty");
+    totalQuestions.textContent = questions.length;
+}
+
+// mostra ou esconde o score
+function hideShowQuizz(){
+    quizzContainer.classList.toggle("hide");
+    scoreContainer.classList.toggle("hide");
+}
+
+// Reinicia quizz
+const restartBtn = document.querySelector("#restart");
+restartBtn.addEventListener("click", function(){
+
+    actualQuestion = 0;
+    points = 0;
+    hideShowQuizz();
+    init();
+    
+});
 
 // start do quizz
 init();
